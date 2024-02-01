@@ -12,31 +12,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.uisrael.microserviciocliente.model.TipoCliente;
-import com.uisrael.microserviciocliente.service.ITipoClienteService;
+import com.uisrael.microserviciocliente.model.Cliente;
+import com.uisrael.microserviciocliente.service.IClienteService;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @RestController
-@RequestMapping("/api/tipocliente")
+@RequestMapping("/api/cliente")
 @Getter
 @Setter
 @RefreshScope
-public class TipoClienteController {
-
+public class ClienteController {
 	@Autowired
-	private ITipoClienteService servicio;
+	private IClienteService servicio;
 
-	@PostMapping("/guardartipocliente")
+	@PostMapping("/guardarcliente")
 	@ResponseStatus(value = HttpStatus.OK)
-	public void guardarTipoCliente(@RequestBody TipoCliente nuevoTipoCliente) {
-		servicio.insertarTipoCliente(nuevoTipoCliente);
+	public void guardarCliente(@RequestBody Cliente nuevoCliente) {
+		servicio.insertarCliente(nuevoCliente);
 	}
 
-	@GetMapping("/listartipoclientes")
+	@GetMapping("/listarclientes")
 	@ResponseStatus(value = HttpStatus.OK)
-	public List<TipoCliente> listarCliente() {
-		return servicio.listarTiposCliente();
+	public List<Cliente> listarCliente() {
+		return servicio.listarCliente();
 	}
 }
